@@ -6,10 +6,10 @@ import React, { Component } from 'react';
 export default class Layout extends Component {
     render(){
         return (
-            <div className="h-100">
+            <div className="h-90">
                 <Header/>
                 <div className="d-flex w-100 justify-content-between h-100">
-                    <div className="w-25 border">
+                    <div className="w-25 border bg-light">
                         <ChatList/>
                     </div>
                     <div className="w-75 border">
