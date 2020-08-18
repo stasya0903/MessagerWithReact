@@ -18,7 +18,7 @@ export default class Messenger extends Component {
         let msgBefore = [...prevState.messages];
         let msgAfter = [...this.state.messages];
 
-        if(msgAfter.length > 0 && msgBefore.length < msgAfter.length && msgAfter.pop().user !== "bot"){
+        if (msgAfter.length > 0 && msgBefore.length < msgAfter.length && msgAfter.pop().user !== "bot") {
 
             setTimeout(() =>
                     this.setState({
@@ -36,14 +36,14 @@ export default class Messenger extends Component {
 
     onSubmitNewMessage() {
         this.setState({
-            messages: [...this.state.messages , { user: this.state.user, text: this.state.newMessage}],
+            messages: [...this.state.messages, {user: this.state.user, text: this.state.newMessage}],
             newMessage: ""
         });
 
 
     }
 
-    onChangeNewMessage(newMessage){
+    onChangeNewMessage(newMessage) {
         this.setState({
             newMessage: newMessage
         })
@@ -56,8 +56,14 @@ export default class Messenger extends Component {
             return <MessageComponent text={message.text} key={message.text} user={message.user}/>
         });
         return (
-            <div className="messager">
-                {messageField}
+            <div className="h-100">
+
+                <div className="d-flex flex-column h-90">
+                    <div className="d-flex flex-column bg-light p-2 h-100 "
+                         style={{overflowY: 'scroll'}}>
+                        {messageField}
+                    </div>
+                </div>
                 <AddMessage
                     newMessage={this.state.newMessage}
                     onChange={this.onChangeNewMessage}

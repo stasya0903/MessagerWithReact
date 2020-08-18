@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import {TextField, FloatingActionButton} from 'material-ui';
+import SendIcon from 'material-ui/svg-icons/content/send';
 
 export default class AddMessage extends Component {
     constructor(props) {
@@ -17,24 +19,26 @@ export default class AddMessage extends Component {
         e.preventDefault();
     }
 
-    handleKeyUp(event) {
-        if (event.keyCode === 13) this.props.onSubmit();
-    }
 
 
     render() {
         let newMessage = this.props.newMessage;
         return (
-            <div>
-                <form onSubmit={this.handleSubmit}>
-                    <input type="text"
-                           value={newMessage}
-                           onChange={this.handleChange}
-                           onKeyUp={event => {
-                               this.handleKeyUp(event)
-                           }}
-                           />
-                    <input type="submit"/>
+            <div >
+                <form onSubmit={this.handleSubmit} className="d-flex w-100 p-3">
+                    <TextField
+                        name="input"
+                        fullWidth={true}
+                        hintText="Введите сообщение"
+                        style={{fontSize: '22px'}}
+                        value={newMessage}
+                        onChange={this.handleChange}
+                    />
+                    <FloatingActionButton
+                        type="submit">
+                        <SendIcon />
+                    </FloatingActionButton>
+
                 </form>
             </div>
         );
